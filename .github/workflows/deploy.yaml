@@ -5,10 +5,10 @@ on:
     branches:
       - main
 
-# env:
-#   NEXUS_HELM_REPO: ${{ secrets.NEXUS_HELM_REPO }}
-#   NEXUS_HELM_REPO_USER: ${{ secrets.NEXUS_HELM_REPO_USER }}
-#   NEXUS_HELM_REPO_PASSWORD: ${{ secrets.NEXUS_HELM_REPO_PASSWORD }}
+env:
+  NEXUS_HELM_REPO: ${{ secrets.NEXUS_HELM_REPO }}
+  NEXUS_HELM_REPO_USER: ${{ secrets.NEXUS_HELM_REPO_USER }}
+  NEXUS_HELM_REPO_PASSWORD: ${{ secrets.NEXUS_HELM_REPO_PASSWORD }}
   # SAUSAGE_STORE_NAMESPACE: YOUR_NAMESPACE
   # KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
   # VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
