@@ -1,16 +1,16 @@
-FROM node:18 AS builder
+FROM node:10.24.1-buster-slim AS builder
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package*.json ./
 RUN npm ci
 
 COPY . .
 RUN npm run build -- --prod
 
-FROM nginx:alpine
+FROM nginx:1.25-alpine
 
-COPY --from=builder /app/dist/frontend /usr/share/nginx/html
+COPY --from=builder /app/dist/frontend/ /usr/share/nginx/html/
 
 EXPOSE 80
 

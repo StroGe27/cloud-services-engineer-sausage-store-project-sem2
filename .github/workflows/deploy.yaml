@@ -35,23 +35,14 @@ jobs:
             password: ${{ secrets.DOCKER_PASSWORD }}
             # Хорошо ли держать логин и пароль прямо в коде workflow?
             # Нет, это нехорошо. Хранить пароль надо в Secrets.
-        - name: Push Backend to DockerHub
-          # Одновременный билд и пуш образа в Docker Hub:
-          uses: docker/build-push-action@v4
-          with:
-            # Параметр context: ./backend/ указывает, что нужный Dockerfile 
-            # находится в ./backend/
-            context: ./backend/
-            # Параметр push: true указывает, что образ нужно не только собрать,
-            # но и отправить на Docker Hub:
-            push: true
-            # В параметре tags задаётся название и тег для образа.
-            # Для каждого пересобранного образа 
-            # устанавливаем тег latest, чтобы потом
-            # на сервере и в docker-compose.yml не указывать версию образа:
-            tags: ${{ env.YOUR_DOCKERHUB }}/sausage-backend:latest
-            build-args: |
-              VERSION=${{ github.sha }}
+        # - name: Push Backend to DockerHub
+        #   uses: docker/build-push-action@v4
+        #   with:
+        #     context: ./backend/
+        #     push: true
+        #     tags: ${{ env.YOUR_DOCKERHUB }}/sausage-backend:latest
+        #     build-args: |
+        #       VERSION=${{ github.sha }}
         - name: Push Frontend to DockerHub
           uses: docker/build-push-action@v4
           with:

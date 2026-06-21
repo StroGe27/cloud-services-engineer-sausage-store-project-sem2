@@ -1,5 +1,5 @@
 # Start from the latest golang base image
-FROM golang:latest as builder
+FROM golang:1.20-alpine as builder
 
 # Set the Current Working Directory inside the container
 WORKDIR /app
@@ -18,7 +18,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
 
 ######## Start a new stage from scratch #######
-FROM alpine:latest  
+FROM alpine:3.19
 
 WORKDIR /app
 
