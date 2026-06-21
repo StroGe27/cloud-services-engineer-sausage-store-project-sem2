@@ -10,6 +10,7 @@ RUN npm run build -- --prod
 
 FROM nginx:1.25-alpine
 
+COPY nginx.conf.template /etc/nginx/templates/default.conf.template
 COPY --from=builder /app/dist/frontend/ /usr/share/nginx/html/
 
 EXPOSE 80
