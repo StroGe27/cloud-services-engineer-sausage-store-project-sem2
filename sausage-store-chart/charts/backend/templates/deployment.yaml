@@ -23,6 +23,7 @@ spec:
   template:
     metadata:
       annotations:
+        rollme: {{ .Release.Revision | quote }}
         prometheus.io/path: {{ .Values.annotations.path }}
         prometheus.io/port: "{{ .Values.annotations.port }}"
         prometheus.io/scrape: "{{ .Values.annotations.scrape }}"
