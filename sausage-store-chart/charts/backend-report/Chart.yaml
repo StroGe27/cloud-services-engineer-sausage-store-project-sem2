@@ -1,0 +1,7 @@
+---
+apiVersion: v2
+name: backend-report
+version: 0.1.0
+description: Backend report chart
+type: application
+appVersion: "latest"

@@ -65,7 +65,9 @@ spec:
             - name: {{ .Chart.Name }}
               containerPort: {{ .Values.containerPort }}
           livenessProbe:
-{{ toYaml .Values.livenessProbe | indent 12 }} 
+{{ toYaml .Values.livenessProbe | indent 12 }}
+          readinessProbe:
+{{ toYaml .Values.readinessProbe | indent 12 }}
       volumes:
       - name: {{ .Release.Name }}-{{ .Chart.Name }}-conf
         configMap:
@@ -81,17 +83,3 @@ spec:
               path: report_path
             - key: log_path
               path: log_path
----
-apiVersion: autoscaling.k8s.io/v1
-kind: VerticalPodAutoscaler
-metadata:
-  name: {{ .Release.Name }}-{{ .Chart.Name }}-vpa
-spec:
-  targetRef:
-    apiVersion: "apps/v1"
-    kind: Deployment
-    name: {{ .Release.Name }}-{{ .Chart.Name }}
-  updatePolicy:
-{{ toYaml .Values.vpa.updatePolicy | indent 4 }} 
-  resourcePolicy:
-{{ toYaml .Values.vpa.resourcePolicy | indent 4 }} 
