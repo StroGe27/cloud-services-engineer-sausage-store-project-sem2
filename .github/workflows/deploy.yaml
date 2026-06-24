@@ -116,5 +116,5 @@ jobs:
               --version ${CHART_VERSION} \
               --namespace ${SAUSAGE_STORE_NAMESPACE} \
               --wait \
-              --timeout 10m \
+              --timeout 5m \
               --debug
